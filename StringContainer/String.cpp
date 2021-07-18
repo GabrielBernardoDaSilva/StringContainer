@@ -1,9 +1,9 @@
 #include "String.h"
 
-char* deepCopy(char* dst, int size, char* src) {
+void deepCopy(char* dst, int size, char* src) {
 	for (int i = 0; i < size; i++)
 		dst[i] = src[i];
-	return dst;
+	dst[size] = '\0';
 }
 
 
@@ -81,8 +81,8 @@ gbLib::String gbLib::String::operator+(const String& another)
 void gbLib::String::Reverse()
 {
 	unsigned int size = strlen(str);
-	char* aux = new char[size];
-	aux = deepCopy(aux, size, str);
+	char* aux = new char[size + 1];
+	deepCopy(aux, size, str);
 	int index = 0;
 	for (int i = size - 1; i >= 0; i--)
 	{
